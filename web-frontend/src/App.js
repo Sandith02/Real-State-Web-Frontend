@@ -10,7 +10,7 @@ const App = () => {
     // Simulate a loading delay (e.g., 3 seconds)
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Show the loading page for 3 seconds
+    }, 6000); // Show the loading page for 3 seconds
 
     // Cleanup the timer when the component unmounts
     return () => clearTimeout(timer);
