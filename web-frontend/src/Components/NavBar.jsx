@@ -8,7 +8,7 @@ const NavBar = () => {
         <div className="brand">abodiq</div>
         <div className="nav-links">
         <div className='nav-links-main'>
-          <a href="#home" className="nav-item">Home</a>
+          <a href="#content-2" className="nav-item">Home</a>
           
           <div className="dropdown">
             <button className="dropdown-btn">Properties</button>
