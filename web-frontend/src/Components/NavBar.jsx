@@ -37,10 +37,10 @@ const StyledNavbar = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 10px 30px;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50px;
     backdrop-filter: blur(10px);
-    position: fixed;
+    position: relative;
     top: 20px;
     left: 20px;
     right: 20px;

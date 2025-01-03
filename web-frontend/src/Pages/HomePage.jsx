@@ -7,51 +7,79 @@ import NavBar from '../Components/NavBar';  // Update the import path as needed
 const HomePage = () => {
   return (
     <StyledWrapper>
-    <div>
-      <NavBar />
-    </div>
-      <div id='content-1'>
-        <div className='sub-topic'>
-          The Perfect Place to
+        <div className="image-background"></div> {/* Separate div for image styling */}
+        <div id="content-1">
+          <NavBar />
+          <div className="sub-topic">
+            The Perfect Place to
+          </div>
+          <div className="main-topic">
+            Discover. Dream. Dwell.
+          </div>
+          <div className="search-container">
+            <SearchBar />
+          </div>
         </div>
-        <div className='main-topic'>
-          Discover. Dream. Dwell.
+        <div id="content-2">
+          <div className="sub-main-topic">
+            Welcome to the World of Dreams
+          </div>
+          <div className="logo-title">
+            The Perfect Place to
+          </div>
+          <div className='content-type1'>
+          “abodiq” is your one-stop destination for finding the perfect home. Whether you're looking to rent or buy,
+          we make the process seamless and stress-free. We aim to connect you with homes that match your 
+          dreams and desires. From cozy apartments to spacious houses, our diverse listings cater to all your needs.
+          </div>  
         </div>
-        <div className='search-container'>
-          <SearchBar />
-        </div>
-      </div>
-    </StyledWrapper>
+       </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
-  *{
+  * {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
   }
+
   body {
     font-family: "Afacad Flux", serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white; 
+    color: white;
     text-align: center; /* Center the text horizontally */
   }
+
   #content-1 {
-    position: relative;
-    min-height: fit-content;
     text-align: center;
-    background-image: url(${VillaImage}); /* Background image from the imported path */
-    background-size: cover; /* Ensure the background image covers the full screen */
-    background-position: center; /* Center the background image */
-    height: 100vh; /* Ensure the container takes up the full viewport height */
-    margin: 0; /* Remove any margin around the content */
-    padding: 0; /* Remove any padding */
-  }
-  .sub-topic{
     position: relative;
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+  }
+
+  .image-background {
+    background-image: url(${VillaImage}); /* Apply background image */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    padding: 0; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    z-index: -1; /* Ensures image stays behind the content */
+  }
+
+  .content {
+    position: relative;
+    z-index: 1; /* Content stays above the background */
+  }
+
+  .sub-topic {
     margin-top: 300px;
     font-size: 64px;
     font-family: 'Afacad Flux';
@@ -59,20 +87,32 @@ const StyledWrapper = styled.div`
     text-align: center;
     display: inline-block;
   }
-  .main-topic{
+
+  .main-topic {
     margin-top: -60px;
-    position: relative;
     font-size: 136px;
     font-weight: 500;
     font-family: 'Afacad Flux';
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
     text-align: center;
     display: inline-block;
   }
-  .search-container{
+
+  .search-container {
     margin-top: 50px;
   }
-  
+  #content-2 {
+    text-align: center;
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+  }
+
+
+
+
+
+
 `;
 
 export default HomePage;
