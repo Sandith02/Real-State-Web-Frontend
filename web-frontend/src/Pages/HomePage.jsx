@@ -7,6 +7,7 @@ import WatermarkImage from '../Assets/abodiq logo.png';
 import FilterSection from '../Components/FilterSection';
 
 
+
 const HomePage = () => {
   return (
     <StyledWrapper>
