@@ -219,6 +219,7 @@ const StyledWrapper = styled.div`
     flex-wrap: wrap;
     gap: 10px;
     justify-content: flex-start;
+    font-family: 'Afacad Flux', sans-serif;
   }
 
   .preferences-item {

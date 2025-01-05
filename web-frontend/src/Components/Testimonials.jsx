@@ -20,13 +20,13 @@ const Testimonials = () => {
       id: 1,
       text: `"abodiq” helped us find the best place for our family! Their team was amazing, guiding us through every step, and we are so happy with our new home. Highly recommend this platform for anyone in the market.`,
       name: "Nirosha Perera, Colombo",
-      image: customer2,
+      image: customer3,
     },
     {
       id: 2,
       text: `"abodiq” was fantastic in providing options that fit our budget. The user experience is great, and we found exactly what we were looking for! Highly recommend it to anyone.`,
       name: "Janith Fernando, Kandy",
-      image: customer3,
+      image: customer2,
     },
   ];
 
@@ -60,42 +60,44 @@ const Testimonials = () => {
 
 const StyledWrapper = styled.div`
   .testimonial-section {
+    font-family: 'Afacad Flux';
     text-align: center;
     margin-top: 50px;
     padding: 40px;
-    background-color: #f8f8f8;
+    margin-left: 215px;
+    margin-right: 215px;
+    background-color:rgb(255, 255, 255);
     border-radius: 8px;
   }
 
   h2 {
-    font-size: 36px;
-    font-weight: bold;
+    font-size: 50px;
+    font-weight: 500;
     color: #333;
     margin-bottom: 10px;
   }
 
   .subheading {
-    font-size: 18px;
+    font-size: 30px;
     color: #777;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
 
   .testimonial-card {
-    background-color: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .testimonial-text {
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 25px;
+    font-weight: 200;
     color: #555;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     line-height: 1.5;
   }
 
   .customer-info {
+    margin-bottom: 20px;
     font-size: 18px;
     color: #333;
   }
@@ -108,6 +110,7 @@ const StyledWrapper = styled.div`
     margin-top: 15px;
     display: flex;
     justify-content: center;
+    margin-top: 20px;
     gap: 10px;
   }
 

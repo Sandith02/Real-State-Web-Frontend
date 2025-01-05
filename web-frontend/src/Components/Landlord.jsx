@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Import the icon from lucide-react
+import { SendHorizontal } from 'lucide-react';
+
 // Import the image (replace the placeholder path with the actual one)
 import landlordImage from '../Assets/Person 07.jpeg';  // Adjust path as needed
 
@@ -15,7 +18,9 @@ const Landlord = () => {
           </p>
           <div className="input-container">
             <input type="text" placeholder="Enter your contact info..." />
-            <button>→</button>
+            <button>
+              <SendHorizontal size={24} />
+            </button>
           </div>
         </div>
         <div className="image-section">
@@ -27,67 +32,72 @@ const Landlord = () => {
 };
 
 const StyledWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 50px;
-  background-color: #f8f8f8;
-  border-radius: 8px;
-
   .landlord-container {
     display: flex;
+    padding: 50px;
+    border-radius: 8px;
+    margin-left: 215px;
+    margin-right: 215px;
+    font-family: 'Afacad Flux';
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 50px;
   }
 
   .text-section {
     flex: 1;
+    text-align: left;
     padding-right: 20px;
   }
 
   .text-section h2 {
-    font-size: 32px;
+    font-size: 40px;
     color: #333;
-    font-weight: bold;
+    font-weight: 500;
     margin-bottom: 15px;
   }
 
   .text-section p {
-    font-size: 18px;
+    font-size: 20px;
     color: #555;
+    font-weight: 300;
     margin-bottom: 25px;
   }
 
   .input-container {
     display: flex;
     align-items: center;
+    border: 1px solid rgb(145, 197, 208);
+    border-radius: 30px;
+    width: 450px;
   }
 
   .input-container input {
-    padding: 10px;
-    font-size: 16px;
+    padding: 15px;
+    font-size: 15px;
+    margin-left: 20px;
     width: 300px;
+    border: none;
+    outline: none;
+    flex-grow: 1;
     border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
   }
 
   .input-container button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: transparent;
+    color:rgb(0, 106, 133);
     font-size: 20px;
     border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
   }
 
   .input-container button:hover {
-    background-color: #45a049;
+    color: #45a049;
   }
 
   .image-section img {
