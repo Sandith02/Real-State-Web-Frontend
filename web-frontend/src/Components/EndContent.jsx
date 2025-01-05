@@ -45,12 +45,14 @@ const EndContent = () => {
             <li><a href="#commercial-rent">Commercial properties for rent</a></li>
             <li><a href="#commercial-sale-unawatuna">Commercial properties for sale in Unawatuna</a></li>
             <li><a href="#houses-sale-galle">Houses for sale in Galle</a></li>
+            <li><a href="#warehouse-rent-colombo">Warehouse for rent in Colombo</a></li>
           </ul>
         </div>
 
         {/* Contact Info */}
         <div className="contact-info">
           <p><strong>Address:</strong> No54, Imaduwa Road, Ahangama, Galle, Sri Lanka</p>
+          <p><strong>Email:</strong> adobiq.info@gmail.com</p>
           <p><strong>Phone:</strong> +94 012 356 789</p>
           <p><strong>Find us on</strong></p>
           <div className="social-icons">
@@ -165,14 +167,14 @@ const StyledWrapper = styled.div`
   }
 
   .logo {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     margin-top: 0px
   }
 
   .quick-links {
     display: flex;
-    margin-left: 125px;
+    margin-left: 85px;
     flex-direction: column;
     align-items: center; /* Center the links */
     margin-top: 20px;

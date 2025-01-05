@@ -123,7 +123,7 @@ const StyledWrapper = styled.div`
   }
 
   .sub-topic {
-    margin-top: 300px;
+    margin-top: 280px;
     font-size: 64px;
     font-family: 'Afacad Flux';
     color: #d9d9d9;
@@ -132,7 +132,7 @@ const StyledWrapper = styled.div`
   }
 
   .main-topic {
-    margin-top: -60px;
+    margin-top: -65px;
     font-size: 136px;
     font-weight: 500;
     font-family: 'Afacad Flux';

@@ -160,9 +160,9 @@ const StyledWrapper = styled.div`
   .property-card {
     width: 250px;
     background-color: rgb(0, 0, 0);
-    border-radius: 20px;
+    border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
     position: relative;
     color: white;
   }

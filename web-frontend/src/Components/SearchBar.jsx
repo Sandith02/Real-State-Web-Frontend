@@ -78,7 +78,7 @@ const StyledWrapper = styled.div`
   .search-button {
     padding: 10px 30px;
     margin-left: 10px;
-    background-color:rgb(52, 122, 23);
+    background-color:rgb(19, 18, 18);
     color: white;
     border: none;
     height: 50px;
@@ -87,7 +87,7 @@ const StyledWrapper = styled.div`
   }
 
   .search-button:hover {
-    background-color:rgb(0, 77, 30);
+    background-color:rgb(112, 112, 112);
   }
 `;
 

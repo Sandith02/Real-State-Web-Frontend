@@ -68,7 +68,7 @@ const StyledWrapper = styled.div`
   .input-container {
     display: flex;
     align-items: center;
-    border: 1px solid rgb(145, 197, 208);
+    border: 1px solid rgb(54, 54, 54);
     border-radius: 30px;
     width: 450px;
   }
@@ -86,7 +86,7 @@ const StyledWrapper = styled.div`
 
   .input-container button {
     background-color: transparent;
-    color:rgb(0, 106, 133);
+    color:rgb(25, 25, 25);
     font-size: 20px;
     border: none;
     cursor: pointer;
