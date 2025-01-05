@@ -5,8 +5,11 @@ import SearchBar from '../Components/SearchBar';
 import NavBar from '../Components/NavBar';  // Update the import path as needed
 import WatermarkImage from '../Assets/abodiq logo.png';
 import FilterSection from '../Components/FilterSection';
-
-
+import SampleAds from '../Components/SampleAds';
+import Testimonials from '../Components/Testimonials';  // Update the import path as needed 
+import Landlord from '../Components/Landlord';
+import EndContent from '../Components/EndContent';
+import Footer from '../Components/Footer';
 
 const HomePage = () => {
   return (
@@ -68,6 +71,11 @@ const HomePage = () => {
         </div>
         <div id="content-3">
           <FilterSection /> {/* Add FilterSection here */}
+          <SampleAds />
+          <Testimonials /> {/* Add Testimonials here */}
+          <Landlord />
+          <EndContent />
+          <Footer />
         </div>
        </StyledWrapper>
   );
