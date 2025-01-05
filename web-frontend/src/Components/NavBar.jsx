@@ -8,16 +8,8 @@ const NavBar = () => {
         <div className="brand">abodiq</div>
         <div className="nav-links">
         <div className='nav-links-main'>
-          <a href="#content-2" className="nav-item">Home</a>
-          
-          <div className="dropdown">
-            <button className="dropdown-btn">Properties</button>
-            <div className="dropdown-content">
-              <a href="#rent">Rent</a>
-              <a href="#buy">Buy</a>
-            </div>
-          </div>
-          
+          <a href="#content-2" className="nav-item">About</a>
+          <a href="#favorites" className="nav-item">Properties</a>
           <a href="#favorites" className="nav-item">Favorites</a>
           <a href="#contact" className="nav-item">Contact Us</a>
         </div>  

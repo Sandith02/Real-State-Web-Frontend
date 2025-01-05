@@ -4,6 +4,7 @@ import HouseImage from '../Assets/House.jpeg';
 import ApartmentImage from '../Assets/Apartment.jpeg';
 import CommercialImage from '../Assets/Commercial.jpeg';
 import WarehouseImage from '../Assets/Warehouse.jpeg';
+import bgImage from '../Assets/house15.jpeg'
 
 const FilterSection = () => {
   const [minPrice, setMinPrice] = useState(0); // Minimum price value
@@ -35,7 +36,7 @@ const FilterSection = () => {
   return (
     <StyledWrapper>
       <div className="filter-header">
-        <h2>Property Type</h2>
+        <h2>Explore Here</h2>
       </div>
       <div className="filter-container">
         {/* Property Type Section */}
@@ -81,7 +82,7 @@ const FilterSection = () => {
           {/* Row 1 */}
           <div className="preferences-item">
             <label>Where</label>
-            <select>
+            <select id='where'>
               <option value="colombo">Colombo, Sri Lanka</option>
             </select>
           </div>
@@ -162,7 +163,13 @@ const StyledWrapper = styled.div`
   .filter-container {
     margin-top: 80px;
     margin-left: 215px;
+    margin-right: 215px;
     display: flex;
+    padding:30px;
+    background-image: url(${bgImage}); /* Using the imported bg image */    background-size: cover; /* Make sure the image covers the container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Avoid repeating the image */
+    border-radius:40px;
     gap: 20px;
   }
 
@@ -170,9 +177,11 @@ const StyledWrapper = styled.div`
     text-align: center;
   }
 
-  .filter-header {
+  .filter-header h2 {
     font-family: 'Afacad Flux', serif;
-    font-size: 24px;
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
   }
 
   .property-cards {
@@ -196,48 +205,66 @@ const StyledWrapper = styled.div`
   }
 
   .property-card.selected img {
-    border: 2px solid #3498db;
+    border: 3px solid rgb(255, 255, 255);
   }
 
   .property-card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 25px;
+    width: 150px;
+    height: 150px;
+    border-radius: 30px;
     object-fit: cover;
   }
 
   .card-title {
     font-family: 'Afacad Flux', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     margin-top: 10px;
-    font-weight: bold;
+    font-weight: 200;
+    color: white;
   }
 
   .preferences-container {
-    margin-right: 100px;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 50px;
     justify-content: flex-start;
     font-family: 'Afacad Flux', sans-serif;
   }
-
   .preferences-item {
     display: flex;
+    text-align: left;
     flex-direction: column;
-    width: 23%;
+    width: 25%;
   }
-
+  .preferences-item select#where {
+    width: 250px; 
+  }
   .preferences-item label {
-    font-size: 14px;
-    margin-bottom: 5px;
+    font-size: 20px;
+    color:white;
+    font-weight: 200;
+    margin-bottom: 15px;
   }
 
-  .preferences-item select,
-  .preferences-item input {
-    padding: 5px;
-    font-size: 14px;
-  }
+.preferences-item select,
+.preferences-item input {
+  padding: 10px;
+  font-size: 15px;
+  border: none; /* Remove default border */
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply the blur effect */
+  border-radius: 10px; /* Rounded corners for the glass effect */
+  transition: all 0.3s ease; /* Smooth transition for hover and focus */
+}
+
+
+.preferences-item select:hover,
+.preferences-item select:focus,
+.preferences-item input:focus {
+  color:black;
+}
+
 
   .price-container {
     display: flex;
@@ -253,24 +280,29 @@ const StyledWrapper = styled.div`
 
   .preferences-item-btn1 button {
     padding: 10px;
-    background-color: #3498db;
+    margin-right:-30px;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+    border-radius: 10px; /* Rounded corners for the glass effect */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     width: 120px;
-    margin-top: 10px;
+    margin-top: 44px;
   }
 
   .preferences-item-btn2 button {
     padding: 10px;
-    background-color: #3498db;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+    border-radius: 10px; /* Rounded corners for the glass effect */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     width: 150px;
-    margin-top: 10px;
+    margin-top: 44px;
   }
 
   .preferences-item button:hover {

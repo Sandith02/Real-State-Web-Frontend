@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import propertyData from '../Properties.json'; // Import the properties JSON file
+import bgImage from '../Assets/pattern4.jpeg';
 
 // Importing icons from lucide-react
 import { Bed, Bath, Ruler, ChevronRight } from 'lucide-react';
@@ -159,7 +160,9 @@ const StyledWrapper = styled.div`
 
   .property-card {
     width: 250px;
-    background-color: rgb(0, 0, 0);
+    background-image: url(${bgImage}); /* Using the imported bg image */    background-size: cover; /* Make sure the image covers the container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Avoid repeating the image */
     border-radius: 30px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
@@ -168,10 +171,17 @@ const StyledWrapper = styled.div`
   }
 
   .property-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-  }
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: opacity 0.6s ease-in-out; /* Smooth transition for opacity change */
+  opacity: 0.8; /* Default opacity (darkened image) */
+}
+
+.property-card:hover img {
+  opacity: 1; /* Full opacity (original image) when hovered */
+}
+
 
   .card-details {
     padding: 15px;
