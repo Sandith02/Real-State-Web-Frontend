@@ -138,7 +138,7 @@ const StyledWrapper = styled.div`
   }
 
   .see-more {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 300;
     color:rgb(0, 24, 41);
     text-decoration: none;
@@ -159,7 +159,7 @@ const StyledWrapper = styled.div`
 
   .property-card {
     width: 250px;
-    background-color: rgb(3, 58, 72);
+    background-color: rgb(42, 42, 42);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);

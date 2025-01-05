@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import logo from '../Assets/abodiq logo.png';
 
 // Importing icons from lucide-react
 import { Facebook, Linkedin, Instagram } from 'lucide-react';
@@ -10,7 +11,7 @@ const Footer = () => {
       <div className="footer-container">
         {/* Logo */}
         <div className="footer-logo">
-          <h1>abodiq</h1>
+          <img src={logo} alt="Logo" className="logo" />  
         </div>
 
         {/* Quick Links */}
@@ -31,15 +32,16 @@ const Footer = () => {
           <p><strong>Phone:</strong> +94 012 356 789</p>
           <p><strong>Find us on</strong></p>
           <div className="social-icons">
-            <a href="https://facebook.com"><Facebook size={24} /></a>
-            <a href="https://linkedin.com"><Linkedin size={24} /></a>
-            <a href="https://instagram.com"><Instagram size={24} /></a>
+            <a href="https://facebook.com"><Facebook size={24} strokeWidth={1.5}/></a>
+            <a href="https://linkedin.com"><Linkedin size={24} strokeWidth={1.5}/></a>
+            <a href="https://instagram.com"><Instagram size={24} strokeWidth={1.5}/></a>
           </div>
         </div>
       </div>
 
       {/* Footer Text */}
       <div className="footer-text">
+
         <p>© 2024 abodiq inc. All rights reserved</p>
       </div>
     </StyledFooter>
@@ -47,34 +49,51 @@ const Footer = () => {
 };
 
 const StyledFooter = styled.footer`
-  background-color: #f8f8f8;
-  padding: 40px 20px;
+  
+  padding: 40px;
   text-align: center;
-  border-top: 1px solid #ddd;
+  border-top: 2px solid rgb(40, 40, 40);
+  margin-left: 215px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 215px;
+  margin-top:50px;
 
   .footer-container {
     display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
     margin: 0 auto;
+    align-items: flex-start; /* To align items to the top */
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
   }
 
-  .footer-logo h1 {
-    font-size: 36px;
-    color: #3498db;
-    margin-bottom: 20px;
+  .logo {
+    width: 200px;
+    height: 200px;
+    margin-top: 0px
+  }
+
+  .quick-links {
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+    align-items: center; /* Center the links */
+    margin-top: 20px;
+    text-align: center;
+    flex: 1;
   }
 
   .quick-links h3 {
     font-size: 20px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 10px;
+    margin-top: -15px;
+    margin-bottom: 5px;
   }
 
   .quick-links ul {
     list-style: none;
     padding: 0;
+    text-align: center;
   }
 
   .quick-links ul li {
@@ -82,7 +101,7 @@ const StyledFooter = styled.footer`
   }
 
   .quick-links ul li a {
-    color: #3498db;
+    color:rgb(124, 124, 124);
     text-decoration: none;
   }
 
@@ -90,16 +109,21 @@ const StyledFooter = styled.footer`
     text-decoration: underline;
   }
 
+  .contact-info {
+    text-align: right;
+  }
+
   .contact-info p {
     font-size: 14px;
     color: #333;
     margin: 5px 0;
+    text-align: right;
   }
 
   .social-icons a {
-    margin: 0 10px;
-    color: #3498db;
+    color: rgb(0, 25, 42);
     text-decoration: none;
+    padding: 5px;
   }
 
   .social-icons a:hover {
@@ -107,8 +131,11 @@ const StyledFooter = styled.footer`
   }
 
   .footer-text {
+    border-top: 1px solid rgb(12, 12, 12); /* Adding border above the footer text */
     margin-top: 20px;
-    color: #777;
+    font-family: 'Afacad Flux';
+    color:rgb(0, 0, 0);
+    margin-bottom: -20px;
   }
 `;
 

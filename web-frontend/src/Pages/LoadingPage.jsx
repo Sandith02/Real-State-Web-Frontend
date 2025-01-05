@@ -10,7 +10,7 @@ const LoadingPage = () => {
           abodiq |  {/* Add space after the text */}
         </div>
         <img src={logo} alt="Logo" className="logo" />        
-        </div>
+      </div>
     </StyledWrapper>
   );
 };
