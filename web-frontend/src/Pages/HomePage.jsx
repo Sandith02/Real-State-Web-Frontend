@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import VillaImage from '../Assets/House6.jpeg';  // Import the image from the Assets folder
+import VillaImage from '../Assets/House8.jpeg';  // Import the image from the Assets folder
 import SearchBar from '../Components/SearchBar'; 
 import NavBar from '../Components/NavBar';  // Update the import path as needed
 import WatermarkImage from '../Assets/abodiq logo.png';
@@ -9,7 +9,7 @@ import SampleAds from '../Components/SampleAds';
 import Testimonials from '../Components/Testimonials';  // Update the import path as needed 
 import Landlord from '../Components/Landlord';
 import EndContent from '../Components/EndContent';
-import Footer from '../Components/Footer';
+
 
 const HomePage = () => {
   return (
@@ -66,17 +66,22 @@ const HomePage = () => {
             <div className="explore-text">Explore the Listings</div>
             <div className="explore-arrow">
             <i className="fa-solid fa-chevron-down"></i>
-          </div>
+            </div>
       </div>  
         </div>
-        <div id="content-3">
+          <div id="content-3">
           <FilterSection /> {/* Add FilterSection here */}
           <SampleAds />
           <Testimonials /> {/* Add Testimonials here */}
           <Landlord />
           <EndContent />
-          <Footer />
-        </div>
+         
+          </div>
+          <div id='content-4'>
+
+          </div>
+       
+       
        </StyledWrapper>
   );
 };
@@ -242,11 +247,6 @@ const StyledWrapper = styled.div`
     height: 100vh; /* Full viewport height */
     width: 100%;
   }
-
-
-
-
-
 `;
 
 export default HomePage;

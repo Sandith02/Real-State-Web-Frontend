@@ -49,19 +49,10 @@ const Footer = () => {
 };
 
 const StyledFooter = styled.footer`
-  
-  padding: 40px;
-  text-align: center;
-  border-top: 2px solid rgb(40, 40, 40);
-  margin-left: 215px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-right: 215px;
-  margin-top:50px;
-
   .footer-container {
     display: flex;
     margin: 0 auto;
+    justify-content: space-between;
     align-items: flex-start; /* To align items to the top */
     flex-wrap: wrap; /* Allows items to wrap on smaller screens */
   }
@@ -75,7 +66,6 @@ const StyledFooter = styled.footer`
   .quick-links {
     display: flex;
     flex-direction: column;
-    margin-left: 150px;
     align-items: center; /* Center the links */
     margin-top: 20px;
     text-align: center;
