@@ -26,7 +26,7 @@ const SampleAds = () => {
             <div className='property-type-titles'>
               Houses for Rent
             </div>
-            <a href="/all-properties" className="see-more">
+            <a href="/properties" className="see-more">
               See more <ChevronRight size={15} />
             </a>
           </div>

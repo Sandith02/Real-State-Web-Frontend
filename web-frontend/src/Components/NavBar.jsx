@@ -2,14 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 const NavBar = () => {
+  
   return (
     <StyledNavbar>
       <div className="navbar-container">
-        <div className="brand">abodiq</div>
+        <div className="brand"> <a href="/">abodiq</a></div>
         <div className="nav-links">
         <div className='nav-links-main'>
           <a href="#content-2" className="nav-item">About</a>
-          <a href="#favorites" className="nav-item">Properties</a>
+          <a href="/properties" className="nav-item">Properties</a>
           <a href="#favorites" className="nav-item">Favorites</a>
           <a href="#contact" className="nav-item">Contact Us</a>
         </div>  
@@ -48,7 +49,10 @@ const StyledNavbar = styled.div`
     font-weight: 500;
     color: white;
   }
-
+ .brand a {
+    text-decoration: none;
+    color: white;
+  }
   .nav-links {
     display: flex;
     gap: 20px;
