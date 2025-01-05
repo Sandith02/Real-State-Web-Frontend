@@ -139,6 +139,7 @@ const StyledWrapper = styled.div`
     color: rgb(255, 255, 255);
     text-align: center;
     display: inline-block;
+    
   }
 
   .search-container {
