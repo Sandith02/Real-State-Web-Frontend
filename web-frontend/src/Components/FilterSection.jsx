@@ -1,36 +1,56 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import HouseImage from '../Assets/House.jpeg';
 import ApartmentImage from '../Assets/Apartment.jpeg';
 import CommercialImage from '../Assets/Commercial.jpeg';
 import WarehouseImage from '../Assets/Warehouse.jpeg';
-import bgImage from '../Assets/house15.jpeg'
+import bgImage from '../Assets/pattern4.jpeg';
 
 const FilterSection = () => {
-  const [minPrice, setMinPrice] = useState(0); // Minimum price value
-  const [maxPrice, setMaxPrice] = useState(10000); // Maximum price value
-  const [selectedType, setSelectedType] = useState(''); // Track selected type (Houses, Apartments, Commercial)
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(10000);
+  const [selectedType, setSelectedType] = useState('');
+  const [bedrooms, setBedrooms] = useState(''); // Bedrooms filter
+  const [bathrooms, setBathrooms] = useState(''); // Bathrooms filter
+  const [tenure, setTenure] = useState(''); // Tenure filter
+  const [dateAdded, setDateAdded] = useState(''); // Date Added filter
+  const navigate = useNavigate(); // Set up navigation
 
-  // Handle min price change
   const handleMinPriceChange = (e) => {
     const newMinPrice = e.target.value;
     if (newMinPrice > maxPrice) {
-      setMaxPrice(newMinPrice); // Adjust max if min exceeds it
+      setMaxPrice(newMinPrice);
     }
-    setMinPrice(newMinPrice); // Update min price
+    setMinPrice(newMinPrice);
   };
 
-  // Handle max price change
   const handleMaxPriceChange = (e) => {
     const newMaxPrice = e.target.value;
     if (newMaxPrice < minPrice) {
-      setMinPrice(newMaxPrice); // Adjust min if max is less than it
+      setMinPrice(newMaxPrice);
     }
-    setMaxPrice(newMaxPrice); // Update max price
+    setMaxPrice(newMaxPrice);
   };
 
   const handleTypeChange = (type) => {
-    setSelectedType(type); // Update the selected property type when an image is clicked
+    setSelectedType(type);
+  };
+
+  const handleSearch = () => {
+    // Create the query string from all filter values
+    const query = new URLSearchParams({
+      type: selectedType,
+      minPrice,
+      maxPrice,
+      bedrooms,
+      bathrooms,
+      tenure,
+      dateAdded
+    }).toString();
+
+    // Navigate to the properties page with the query parameters
+    navigate(`/properties?${query}`);
   };
 
   return (
@@ -39,7 +59,6 @@ const FilterSection = () => {
         <h2>Explore Here</h2>
       </div>
       <div className="filter-container">
-        {/* Property Type Section */}
         <div className="property-type">
           <div className="property-cards">
             <div className="row">
@@ -77,30 +96,25 @@ const FilterSection = () => {
           </div>
         </div>
 
-        {/* Select Preferences Section */}
         <div className="preferences-container">
-          {/* Row 1 */}
           <div className="preferences-item">
             <label>Where</label>
-            <select id='where'>
+            <select id="where">
               <option value="colombo">Colombo, Sri Lanka</option>
             </select>
           </div>
-
           <div className="preferences-item">
             <label>Date Added</label>
-            <select>
+            <select onChange={(e) => setDateAdded(e.target.value)}>
+              <option value="">Anytime</option>
               <option value="last-week">Last Week</option>
               <option value="last-month">Last Month</option>
               <option value="this-year">This Year</option>
             </select>
           </div>
-
-          {/* Row 2 */}
           <div className="preferences-item">
             <label>Price</label>
             <div className="price-container">
-              {/* Min and Max Price Input Fields */}
               <input
                 type="number"
                 value={minPrice}
@@ -120,38 +134,36 @@ const FilterSection = () => {
               />
             </div>
           </div>
-
           <div className="preferences-item">
             <label>Bedrooms</label>
-            <select>
-              <option value="one">One</option>
-              <option value="two">Two</option>
-              <option value="three">Three</option>
-              <option value="plus4">+4</option>
+            <select onChange={(e) => setBedrooms(e.target.value)}>
+              <option value="">Any</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="4">Four+</option>
             </select>
           </div>
-
           <div className="preferences-item">
             <label>Bathrooms</label>
-            <select>
-              <option value="one">One</option>
-              <option value="two">Two</option>
-              <option value="three">Three</option>
-              <option value="plus4">+4</option>
+            <select onChange={(e) => setBathrooms(e.target.value)}>
+              <option value="">Any</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="4">Four+</option>
             </select>
           </div>
-
-          {/* Row 3 */}
-          <div className="preferences-item-btn1">
-            <button onClick={() => handleTypeChange('for-sale')}>For Sale</button>
+          <div className="preferences-item">
+            <label>Tenure</label>
+            <select onChange={(e) => setTenure(e.target.value)}>
+              <option value="">Any</option>
+              <option value="Freehold">Freehold</option>
+              <option value="Leasehold">Leasehold</option>
+            </select>
           </div>
-          <div className="preferences-item-btn1">
-            <button onClick={() => handleTypeChange('for-rent')}>For Rent</button>
-          </div>
-
-          {/* Row 4 (Search Button) */}
           <div className="preferences-item-btn2">
-            <button>Search</button>
+            <button onClick={handleSearch}>Search</button>
           </div>
         </div>
       </div>

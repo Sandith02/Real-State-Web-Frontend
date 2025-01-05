@@ -1,64 +1,122 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import NavBar from '../Components/NavBar';
 import styled from 'styled-components';
 import bgImage from '../Assets/house21.jpeg';
+import propertiesData from '../Properties.json'; // Import properties data
 import FilterSection from '../Components/FilterSection';
 
 const PropertiesPage = () => {
+  const location = useLocation();
+  const [filteredProperties, setFilteredProperties] = useState([]);
+
+  // Extract query parameters from the URL
+  const queryParams = new URLSearchParams(location.search);
+  const selectedType = queryParams.get('type');
+  const minPrice = parseInt(queryParams.get('minPrice'), 10);
+  const maxPrice = parseInt(queryParams.get('maxPrice'), 10);
+  const bedrooms = queryParams.get('bedrooms');
+  const bathrooms = queryParams.get('bathrooms');
+  const tenure = queryParams.get('tenure');
+  const dateAdded = queryParams.get('dateAdded');
+
+  useEffect(() => {
+    // Filter properties whenever query parameters change
+    const filtered = propertiesData.properties.filter((property) => {
+      return (
+        (!selectedType || property.type.toLowerCase() === selectedType) &&
+        (!minPrice || property.price >= minPrice) &&
+        (!maxPrice || property.price <= maxPrice) &&
+        (!bedrooms || property.bedrooms === parseInt(bedrooms)) &&
+        (!bathrooms || property.bathrooms === parseInt(bathrooms)) &&
+        (!tenure || property.tenure.toLowerCase() === tenure.toLowerCase()) &&
+        (!dateAdded || checkDateAdded(property.added, dateAdded))
+      );
+    });
+    setFilteredProperties(filtered);
+  }, [location.search]); // Re-run filtering when query parameters change
+
+  // Helper function to filter by date added
+  const checkDateAdded = (propertyDate, dateAdded) => {
+    const dateMap = {
+      "last-week": (new Date() - new Date(propertyDate)) / (1000 * 60 * 60 * 24) <= 7,
+      "last-month": (new Date() - new Date(propertyDate)) / (1000 * 60 * 60 * 24) <= 30,
+      "this-year": new Date().getFullYear() === new Date(propertyDate).getFullYear(),
+    };
+    return dateMap[dateAdded];
+  };
+
   return (
     <StyledWrapper>
-    <div className='image-background'>
-      <div id='section-1'>
-        <NavBar/>
-        {/* Content for section 1 */}
-        <div className="main-topic">
-            Explore Your Dreams
+      <div className="image-background">
+        <div id="section-1">
+          <NavBar />
+          <div className="main-topic">Explore Your Dreams</div>
+        </div>
+        <div id="section-2">
+          {/* Filter Section */}
+          <FilterSection />
+          {/* Properties List Section */}
+          <div className="properties-list">
+            {filteredProperties.length > 0 ? (
+              filteredProperties.map((property) => (
+                <div key={property.id} className="listing-card">
+                  <img src={property.picture} alt={property.type} />
+                  <div className="listing-info">
+                    <h3>{property.type}</h3>
+                    <p>{property.description}</p>
+                    <p>Price: £{property.price}</p>
+                    <a href={property.url}>View Details</a>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="no-results">No properties match your search criteria.</p>
+            )}
+          </div>
         </div>
       </div>
-      <div id='section-2'>
-        <FilterSection/>
-      </div>
-      </div>  
     </StyledWrapper>
   );
-}
+};
 
 const StyledWrapper = styled.div`
   * {
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
-  
-    body {
-      font-family: "Afacad Flux", serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center; /* Center the text horizontally */
-    }
-  
-    #section-1 {
-      text-align: center;
-      position: relative;
-      height: 100vh; /* Full viewport height */
-      width: 100%;
-    }
-  
-    .image-background {
-      background-image: url(${bgImage}); /* Apply background image */
-      background-size: cover;
-      background-position: center;
-      position: absolute;
-      padding: 0; 
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1; /* Ensures image stays behind the content */
-    }
-    .main-topic {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Afacad Flux", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+
+  #section-1 {
+    text-align: center;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .image-background {
+    background-image: url(${bgImage});
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  .main-topic {
     margin-top: 270px;
     font-size: 140px;
     font-weight: 500;
@@ -66,22 +124,92 @@ const StyledWrapper = styled.div`
     color: rgb(255, 255, 255);
     text-align: center;
     display: inline-block;
-    mix-blend-mode: overlay;opacity: 0; 
+    mix-blend-mode: overlay;
+    opacity: 0;
     transform: translateY(-100%);
-    animation: slideDown 5s ease forwards; 
-}
-@keyframes slideDown {
+    animation: slideDown 5s ease forwards;
+  }
+
+  @keyframes slideDown {
     0% {
-        opacity: 0;
-        transform: translateY(-100%); 
+      opacity: 0;
+      transform: translateY(-100%);
     }
     100% {
-        opacity: 1;
-        transform: translateY(0); 
+      opacity: 1;
+      transform: translateY(0);
     }
-}
-  #section-2{
-  margin-top:50px;
+  }
+
+  #section-2 {
+    margin-top: 50px;
+  }
+
+  .properties-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  .listing-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .listing-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .listing-info {
+    color: white;
+    margin-top: 15px;
+  }
+
+  .listing-info h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .listing-info p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+  .listing-info a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .listing-info a:hover {
+    color: #3498db;
+  }
+
+  .listing-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .no-results {
+    font-size: 18px;
+    color: #ccc;
+    text-align: center;
+    margin-top: 50px;
   }
 `;
 
