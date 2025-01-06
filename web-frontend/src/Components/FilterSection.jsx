@@ -100,7 +100,17 @@ const FilterSection = () => {
           <div className="preferences-item">
             <label>Where</label>
             <select id="where">
-              <option value="colombo">Colombo, Sri Lanka</option>
+              <option value="colombo">Colombo</option>
+              <option value="colombo">Colombo 05</option>
+              <option value="colombo">Colombo 03</option>
+              <option value="colombo">Colombo 07</option>
+              <option value="colombo">Colombo 02</option>
+              <option value="colombo">Colombo 10</option>
+              <option value="colombo">Moratuwa</option>
+              <option value="colombo">Kottawa</option>
+              <option value="colombo">Galle</option>
+              <option value="colombo">Kandy</option>
+              <option value="colombo">Matara</option>
             </select>
           </div>
           <div className="preferences-item">

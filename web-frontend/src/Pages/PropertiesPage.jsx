@@ -127,7 +127,7 @@ const StyledWrapper = styled.div`
     mix-blend-mode: overlay;
     opacity: 0;
     transform: translateY(-100%);
-    animation: slideDown 5s ease forwards;
+    animation: slideDown 3s ease forwards;
   }
 
   @keyframes slideDown {
@@ -147,11 +147,13 @@ const StyledWrapper = styled.div`
 
   .properties-list {
     display: grid;
+    margin-left:215px;
+    margin-right:215px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    padding: 20px;
     justify-content: center;
     margin-bottom: 50px;
+    margin-top: 50px;
   }
 
   .listing-card {
