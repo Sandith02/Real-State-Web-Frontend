@@ -3,10 +3,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import NavBar from '../Components/NavBar';
 import styled from 'styled-components';
 import bgImage from '../Assets/house21.jpeg';
+import bgImage2 from '../Assets/pattern3.jpeg';
 import propertiesData from '../Properties.json';
 import FilterSection from '../Components/FilterSection';
+import EndContent from '../Components/EndContent';
+import { Heart, Bed, Bath, Ruler } from 'lucide-react';
 
-const PropertiesPage = ({ favouriteList, setFavouriteList }) => { // Use props for favourites
+const PropertiesPage = ({ favouriteList, setFavouriteList }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [filteredProperties, setFilteredProperties] = useState([]);
@@ -62,23 +65,54 @@ const PropertiesPage = ({ favouriteList, setFavouriteList }) => { // Use props f
       <div className="image-background">
         <div id="section-1">
           <NavBar />
-          <div className="main-topic">Explore Your Dreams</div>
+          <div className="main-topic">Explore Your Dreams
+            <br />
+            With Us
+          </div>
         </div>
         <div id="section-2">
           <FilterSection />
+          <div className="search-results">Search Results</div>
+          <button className="view-favourites-btn" onClick={goToFavourites}>
+            View Favourites
+          </button>
           <div className="properties-list">
             {filteredProperties.length > 0 ? (
               filteredProperties.map((property) => (
                 <div key={property.id} className="listing-card">
                   <img src={property.picture} alt={property.type} />
+                  <div className="favourite-button-container">
+                    <button
+                      className="favourite-btn"
+                      onClick={() => addToFavourites(property)}
+                    >
+                      <Heart size={25} strokeWidth={2.5} />
+                    </button>
+                  </div>
                   <div className="listing-info">
-                    <h3>
+                    <div className='procard-title'>
                       {property.type} for {property.tenure}
-                    </h3>
-                    <p>{property.description}</p>
-                    <p>Location: {property.location}</p>
-                    <p>Price: Rs.{property.price}</p>
-                    <button onClick={() => addToFavourites(property)}>❤️ Favourite</button>
+                    </div>
+                    <div className='card-des'>
+                    {property.description}
+                    </div>
+                    <div className='card-loc'>
+                    {property.location}
+                    </div>
+                    <div className='card-price'>
+                    Rs.{property.price}
+                    </div>
+                    <div className="property-stats">
+                      <span>
+                        <Bed size={18} /> {property.bedrooms} Beds
+                      </span>
+                      <span>
+                        <Bath size={18} /> {property.bathrooms} Baths
+                      </span>
+                      <span>
+                        <Ruler size={18} /> {property.size} sq.ft
+                      </span>
+                    </div>
                   </div>
                 </div>
               ))
@@ -86,10 +120,8 @@ const PropertiesPage = ({ favouriteList, setFavouriteList }) => { // Use props f
               <p className="no-results">No properties match your search criteria.</p>
             )}
           </div>
-          <button className="favourites-btn" onClick={goToFavourites}>
-            View Favourites
-          </button>
         </div>
+        <EndContent />
       </div>
     </StyledWrapper>
   );
@@ -117,7 +149,6 @@ const StyledWrapper = styled.div`
     height: 100vh;
     width: 100%;
   }
-
   .image-background {
     background-image: url(${bgImage});
     background-size: cover;
@@ -160,74 +191,187 @@ const StyledWrapper = styled.div`
     margin-top: 50px;
   }
 
-  .properties-list {
+   .properties-list {
     display: grid;
-    margin-left: 215px;
-    margin-right: 215px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
+    margin: 50px 215px;
     justify-content: center;
-    margin-bottom: 50px;
-    margin-top: 50px;
   }
-
+    .search-results{
+     font-family: "Afacad Flux", serif;
+     font-size:40px;
+     margin-top:100px;
+     font-weight:500;
+     margin-bottom:-50px;
+     margin-left:215px;
+     }
   .listing-card {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: left;
-    transition: all 0.3s ease-in-out;
+    position: relative;
+    background-image: url(${bgImage2});
+    background-size: cover;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    width: 300px;
   }
 
-  .listing-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  .favourite-button-container {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+  }
+.view-favourites-btn {
+  display: inline-block;
+  margin-top: 0px; /* Add space from top */
+  margin-right: 215px; /* Adjust based on container width */
+  background-color:transparent;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-family: 'Afacad Flux', serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  float: right; /* Align to the right */
+}
+
+.view-favourites-btn:hover {
+  background-color:transparent;
+  transform: scale(1.05);
+  border-radius:50px;
+}
+
+  .favourite-btn {
+    background-color: transparent;
+    border: none;
+    color: rgb(255, 255, 255);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
   }
 
-  .listing-info {
-    color: white;
-    margin-top: 15px;
+  .favourite-btn:hover {
+    transform: scale(1.1);
+    color: rgb(60, 60, 60);
   }
+    .procard-title{
+    font-size:30px;
+    font-weight:500;
+     color: rgb(237, 237, 237);
+    margin-bottom:10px;
+    }
 
-  .listing-info h3 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
+    .card-des{
+    font-size:15px;
+    font-weight:300;
+    margin-bottom:10px;
+    color: rgb(209, 209, 209);
+    }
+    .card-loc{
+     font-size:20px;
+    font-weight:300;
+    margin-bottom:30px;
+    }
 
-  .listing-info p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 15px;
-  }
-
-  .listing-info a {
-    color: #2980b9;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-
-  .listing-info a:hover {
-    color: #3498db;
-  }
-
+    .card-price{
+     font-size:30px;
+    font-weight:500;
+    margin-bottom:15px;
+    }
   .listing-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+    width: 100%;
+    height: 200px;
+    border-radius: 30px 30px 0 0;
     object-fit: cover;
   }
 
-  .no-results {
-    font-size: 18px;
-    color: #ccc;
-    text-align: center;
-    margin-top: 50px;
+  .listing-info {
+    padding: 15px;
+    color: white;
+    font-family: 'Afacad Flux', sans-serif;
   }
+
+  .listing-info h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .listing-info p {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+      .property-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .property-stats span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+/* Tablet (max-width: 768px) */
+  @media (max-width: 768px) {
+    .properties-list {
+      margin: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .search-results {
+      margin-left: 20px;
+      font-size: 30px;
+    }
+
+    .view-favourites-btn {
+      margin-right: 20px;
+      font-size: 18px;
+    }
+
+    .listing-card {
+      width: 250px;
+    }
+  }
+
+  /* Mobile (max-width: 480px) */
+  @media (max-width: 480px) {
+    .properties-list {
+      margin: 10px;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .search-results {
+      margin-left: 10px;
+      font-size: 24px;
+    }
+
+    .view-favourites-btn {
+      margin-right: 10px;
+      font-size: 16px;
+    }
+
+    .listing-card {
+      width: 100%;
+    }
+
+    .procard-title {
+      font-size: 24px;
+    }
+
+    .card-price {
+      font-size: 20px;
+    }
+  }
+  
 `;
 
 export default PropertiesPage;

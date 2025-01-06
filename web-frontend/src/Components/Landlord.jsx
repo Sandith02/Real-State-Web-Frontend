@@ -106,6 +106,83 @@ const StyledWrapper = styled.div`
     border-radius: 50%;
     object-fit: cover;
   }
+
+  /* Media Queries */
+  @media (max-width: 768px) { /* Tablet */
+    .landlord-container {
+      flex-direction: column;
+      align-items: center;
+      margin-left: 50px;
+      margin-right: 50px;
+      padding: 30px;
+    }
+
+    .text-section {
+      text-align: center;
+      padding-right: 0;
+      margin-bottom: 20px;
+    }
+
+    .text-section h2 {
+      font-size: 32px;
+    }
+
+    .text-section p {
+      font-size: 18px;
+    }
+
+    .input-container {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .input-container input {
+      width: 70%;
+    }
+
+    .image-section img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  @media (max-width: 480px) { /* Mobile */
+    .landlord-container {
+      flex-direction: column;
+      align-items: center;
+      margin-left: 20px;
+      margin-right: 20px;
+      padding: 20px;
+    }
+
+    .text-section {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .text-section h2 {
+      font-size: 24px;
+    }
+
+    .text-section p {
+      font-size: 16px;
+    }
+
+    .input-container {
+      width: 100%;
+    }
+
+    .input-container input {
+      width: 65%;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .image-section img {
+      width: 150px;
+      height: 150px;
+    }
+  }
 `;
 
 export default Landlord;

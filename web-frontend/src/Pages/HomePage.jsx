@@ -248,6 +248,70 @@ const StyledWrapper = styled.div`
     height: 100vh; /* Full viewport height */
     width: 100%;
   }
+
+  /* Media Queries */
+  @media (max-width: 768px) { /* Tablet */
+    .sub-topic {
+      font-size: 48px;
+    }
+
+    .main-topic {
+      font-size: 96px;
+    }
+
+    .content-type1 {
+      font-size: 16px;
+      padding: 0 50px;
+    }
+
+    .stat-value {
+      font-size: 36px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+    }
+
+    .explore-text {
+      font-size: 18px;
+    }
+
+    .explore-arrow {
+      font-size: 40px;
+    }
+  }
+
+  @media (max-width: 480px) { /* Mobile */
+    .sub-topic {
+      font-size: 36px;
+      margin-top: 200px;
+    }
+
+    .main-topic {
+      font-size: 64px;
+    }
+
+    .content-type1 {
+      font-size: 14px;
+      padding: 0 20px;
+    }
+
+    .stat-value {
+      font-size: 24px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+    }
+
+    .explore-text {
+      font-size: 16px;
+    }
+
+    .explore-arrow {
+      font-size: 30px;
+    }
+  }
 `;
 
 export default HomePage;

@@ -5,7 +5,7 @@ import HouseImage from '../Assets/House.jpeg';
 import ApartmentImage from '../Assets/Apartment.jpeg';
 import CommercialImage from '../Assets/Commercial.jpeg';
 import WarehouseImage from '../Assets/Warehouse.jpeg';
-import bgImage from '../Assets/pattern4.jpeg';
+import bgImage from '../Assets/house26.jpeg';
 
 const FilterSection = () => {
   const [minPrice, setMinPrice] = useState(0);
@@ -206,6 +206,7 @@ const StyledWrapper = styled.div`
     font-family: 'Afacad Flux', serif;
     font-size: 40px;
     font-weight: 500;
+    margin-bottom:-50px;
     text-align: center;
   }
 
@@ -287,7 +288,7 @@ const StyledWrapper = styled.div`
 .preferences-item select:hover,
 .preferences-item select:focus,
 .preferences-item input:focus {
-  color:black;
+  color:rgb(147, 147, 147);
 }
 
 
@@ -332,6 +333,50 @@ const StyledWrapper = styled.div`
 
   .preferences-item button:hover {
     background-color: #2980b9;
+  }
+
+   @media (max-width: 480px) { /* Mobile */
+    .filter-container {
+      margin-left: 20px;
+      margin-right: 20px;
+      flex-direction: column;
+      padding: 15px;
+      gap: 10px;
+    }
+
+    .row {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .property-card img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .card-title {
+      font-size: 16px;
+    }
+
+    .preferences-item {
+      width: 100%;
+    }
+
+    .preferences-item label {
+      font-size: 14px;
+    }
+
+    .price-input {
+      width: 60px;
+      font-size: 10px;
+    }
+
+    .preferences-item-btn1 button,
+    .preferences-item-btn2 button {
+      width: 100px;
+      font-size: 12px;
+    }
   }
 `;
 
