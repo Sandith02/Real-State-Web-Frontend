@@ -15,6 +15,7 @@ const FilterSection = () => {
   const [bathrooms, setBathrooms] = useState(''); // Bathrooms filter
   const [tenure, setTenure] = useState(''); // Tenure filter
   const [dateAdded, setDateAdded] = useState(''); // Date Added filter
+  const [where, setWhere] = useState(''); // Location filter
   const navigate = useNavigate(); // Set up navigation
 
   const handleMinPriceChange = (e) => {
@@ -46,7 +47,8 @@ const FilterSection = () => {
       bedrooms,
       bathrooms,
       tenure,
-      dateAdded
+      dateAdded,
+      where, // Add location to query string
     }).toString();
 
     // Navigate to the properties page with the query parameters
@@ -99,23 +101,24 @@ const FilterSection = () => {
         <div className="preferences-container">
           <div className="preferences-item">
             <label>Where</label>
-            <select id="where">
+            <select onChange={(e) => setWhere(e.target.value)} value={where}>
+              <option value="">Select Location</option>
               <option value="colombo">Colombo</option>
-              <option value="colombo">Colombo 05</option>
-              <option value="colombo">Colombo 03</option>
-              <option value="colombo">Colombo 07</option>
-              <option value="colombo">Colombo 02</option>
-              <option value="colombo">Colombo 10</option>
-              <option value="colombo">Moratuwa</option>
-              <option value="colombo">Kottawa</option>
-              <option value="colombo">Galle</option>
-              <option value="colombo">Kandy</option>
-              <option value="colombo">Matara</option>
+              <option value="colombo-05">Colombo 05</option>
+              <option value="colombo-03">Colombo 03</option>
+              <option value="colombo-07">Colombo 07</option>
+              <option value="colombo-02">Colombo 02</option>
+              <option value="colombo-10">Colombo 10</option>
+              <option value="moratuwa">Moratuwa</option>
+              <option value="kottawa">Kottawa</option>
+              <option value="galle">Galle</option>
+              <option value="kandy">Kandy</option>
+              <option value="matara">Matara</option>
             </select>
           </div>
           <div className="preferences-item">
             <label>Date Added</label>
-            <select onChange={(e) => setDateAdded(e.target.value)}>
+            <select onChange={(e) => setDateAdded(e.target.value)} value={dateAdded}>
               <option value="">Anytime</option>
               <option value="last-week">Last Week</option>
               <option value="last-month">Last Month</option>
@@ -138,7 +141,7 @@ const FilterSection = () => {
                 type="number"
                 value={maxPrice}
                 min="0"
-                max="10000"
+                max="100000000"
                 onChange={handleMaxPriceChange}
                 className="price-input"
               />
@@ -146,7 +149,7 @@ const FilterSection = () => {
           </div>
           <div className="preferences-item">
             <label>Bedrooms</label>
-            <select onChange={(e) => setBedrooms(e.target.value)}>
+            <select onChange={(e) => setBedrooms(e.target.value)} value={bedrooms}>
               <option value="">Any</option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -156,7 +159,7 @@ const FilterSection = () => {
           </div>
           <div className="preferences-item">
             <label>Bathrooms</label>
-            <select onChange={(e) => setBathrooms(e.target.value)}>
+            <select onChange={(e) => setBathrooms(e.target.value)} value={bathrooms}>
               <option value="">Any</option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -166,10 +169,10 @@ const FilterSection = () => {
           </div>
           <div className="preferences-item">
             <label>Tenure</label>
-            <select onChange={(e) => setTenure(e.target.value)}>
+            <select onChange={(e) => setTenure(e.target.value)} value={tenure}>
               <option value="">Any</option>
-              <option value="Freehold">Freehold</option>
-              <option value="Leasehold">Leasehold</option>
+              <option value="Sale">Sale</option>
+              <option value="Rent">Rent</option>
             </select>
           </div>
           <div className="preferences-item-btn2">

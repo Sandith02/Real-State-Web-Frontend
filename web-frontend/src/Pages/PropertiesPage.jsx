@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import NavBar from '../Components/NavBar';
 import styled from 'styled-components';
 import bgImage from '../Assets/house21.jpeg';
-import propertiesData from '../Properties.json'; // Import properties data
+import propertiesData from '../Properties.json';
 import FilterSection from '../Components/FilterSection';
 
 const PropertiesPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [filteredProperties, setFilteredProperties] = useState([]);
+  const [favouriteList, setFavouriteList] = useState([]); // Local state for favorites
 
   // Extract query parameters from the URL
   const queryParams = new URLSearchParams(location.search);
@@ -19,9 +21,9 @@ const PropertiesPage = () => {
   const bathrooms = queryParams.get('bathrooms');
   const tenure = queryParams.get('tenure');
   const dateAdded = queryParams.get('dateAdded');
+  const where = queryParams.get('where');
 
   useEffect(() => {
-    // Filter properties whenever query parameters change
     const filtered = propertiesData.properties.filter((property) => {
       return (
         (!selectedType || property.type.toLowerCase() === selectedType) &&
@@ -29,21 +31,31 @@ const PropertiesPage = () => {
         (!maxPrice || property.price <= maxPrice) &&
         (!bedrooms || property.bedrooms === parseInt(bedrooms)) &&
         (!bathrooms || property.bathrooms === parseInt(bathrooms)) &&
-        (!tenure || property.tenure.toLowerCase() === tenure.toLowerCase()) &&
-        (!dateAdded || checkDateAdded(property.added, dateAdded))
+        (!tenure || property.tenure.toLowerCase().trim() === tenure.toLowerCase().trim()) &&
+        (!dateAdded || checkDateAdded(property.added, dateAdded)) &&
+        (!where || property.location.toLowerCase().includes(where.toLowerCase()))
       );
     });
     setFilteredProperties(filtered);
-  }, [location.search]); // Re-run filtering when query parameters change
+  }, [location.search]);
 
-  // Helper function to filter by date added
   const checkDateAdded = (propertyDate, dateAdded) => {
     const dateMap = {
-      "last-week": (new Date() - new Date(propertyDate)) / (1000 * 60 * 60 * 24) <= 7,
-      "last-month": (new Date() - new Date(propertyDate)) / (1000 * 60 * 60 * 24) <= 30,
-      "this-year": new Date().getFullYear() === new Date(propertyDate).getFullYear(),
+      'last-week': (new Date() - new Date(propertyDate)) / (1000 * 60 * 60 * 24) <= 7,
+      'last-month': (new Date() - new Date(propertyDate)) / (1000 * 60 * 60 * 24) <= 30,
+      'this-year': new Date().getFullYear() === new Date(propertyDate).getFullYear(),
     };
     return dateMap[dateAdded];
+  };
+
+  const addToFavourites = (property) => {
+    if (!favouriteList.some((item) => item.id === property.id)) {
+      setFavouriteList((prev) => [...prev, property]);
+    }
+  };
+
+  const goToFavourites = () => {
+    navigate('/favourites', { state: { favouriteList } });
   };
 
   return (
@@ -54,19 +66,20 @@ const PropertiesPage = () => {
           <div className="main-topic">Explore Your Dreams</div>
         </div>
         <div id="section-2">
-          {/* Filter Section */}
           <FilterSection />
-          {/* Properties List Section */}
           <div className="properties-list">
             {filteredProperties.length > 0 ? (
               filteredProperties.map((property) => (
                 <div key={property.id} className="listing-card">
                   <img src={property.picture} alt={property.type} />
                   <div className="listing-info">
-                    <h3>{property.type}</h3>
+                    <h3>
+                      {property.type} for {property.tenure}
+                    </h3>
                     <p>{property.description}</p>
-                    <p>Price: £{property.price}</p>
-                    <a href={property.url}>View Details</a>
+                    <p>Location: {property.location}</p>
+                    <p>Price: Rs.{property.price}</p>
+                    <button onClick={() => addToFavourites(property)}>❤️ Favourite</button>
                   </div>
                 </div>
               ))
@@ -74,6 +87,9 @@ const PropertiesPage = () => {
               <p className="no-results">No properties match your search criteria.</p>
             )}
           </div>
+          <button className="favourites-btn" onClick={goToFavourites}>
+            View Favourites
+          </button>
         </div>
       </div>
     </StyledWrapper>
@@ -147,8 +163,8 @@ const StyledWrapper = styled.div`
 
   .properties-list {
     display: grid;
-    margin-left:215px;
-    margin-right:215px;
+    margin-left: 215px;
+    margin-right: 215px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     justify-content: center;

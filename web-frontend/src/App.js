@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import LoadingPage from './Pages/LoadingPage';
 import PropertiesPage from './Pages/PropertiesPage';
+import FavouritePage from './Pages/FavouritePage';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +29,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/properties" element={<PropertiesPage />} />
+            <Route path="/favourites" element={<FavouritePage />} />
           </Routes>
         </Router>
       )}

@@ -33,7 +33,7 @@ const SampleAds = () => {
           <div className="property-cards">
             {/* Display only the first 4 rent properties */}
             {properties
-              .filter(prop => prop.type === 'House' && prop.tenure === 'Leasehold')
+              .filter(prop => prop.type === 'House' && prop.tenure === 'Rent')
               .slice(0, 4)  // Limit to 4 items
               .map((property, index) => (
                 <div key={index} className="property-card">
@@ -73,7 +73,7 @@ const SampleAds = () => {
           <div className="property-cards">
             {/* Display only the first 4 sale properties */}
             {properties
-              .filter(prop => prop.type === 'House' && prop.tenure === 'Freehold')
+              .filter(prop => prop.type === 'House' && prop.tenure === 'Sale')
               .slice(0, 4)  // Limit to 4 items
               .map((property, index) => (
                 <div key={index} className="property-card">

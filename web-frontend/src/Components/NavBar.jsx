@@ -11,7 +11,7 @@ const NavBar = () => {
         <div className='nav-links-main'>
           <a href="#content-2" className="nav-item">About</a>
           <a href="/properties" className="nav-item">Properties</a>
-          <a href="#favorites" className="nav-item">Favorites</a>
+          <a href="/favourites" className="nav-item">Favorites</a>
           <a href="#contact" className="nav-item">Contact Us</a>
         </div>  
           <button className="btn-login">Login</button>
