@@ -7,29 +7,42 @@ import FavouritePage from './Pages/FavouritePage';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [favouriteList, setFavouriteList] = useState([]); // Centralized state for favourites
 
   useEffect(() => {
-    // Simulate a loading delay (e.g., 3 seconds)
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 4000); // Show the loading page for 3 seconds
+    }, 4000);
 
-    // Cleanup the timer when the component unmounts
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
       {isLoading ? (
-        // If still loading, show the LoadingPage
         <LoadingPage />
       ) : (
-        // If loading is complete, show the router and the rest of the app
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/properties" element={<PropertiesPage />} />
-            <Route path="/favourites" element={<FavouritePage />} />
+            <Route
+              path="/properties"
+              element={
+                <PropertiesPage
+                  favouriteList={favouriteList}
+                  setFavouriteList={setFavouriteList} // Pass down setFavouriteList
+                />
+              }
+            />
+            <Route
+              path="/favourites"
+              element={
+                <FavouritePage
+                  favouriteList={favouriteList}
+                  setFavouriteList={setFavouriteList} // Pass down setFavouriteList
+                />
+              }
+            />
           </Routes>
         </Router>
       )}

@@ -6,11 +6,10 @@ import bgImage from '../Assets/house21.jpeg';
 import propertiesData from '../Properties.json';
 import FilterSection from '../Components/FilterSection';
 
-const PropertiesPage = () => {
+const PropertiesPage = ({ favouriteList, setFavouriteList }) => { // Use props for favourites
   const location = useLocation();
   const navigate = useNavigate();
   const [filteredProperties, setFilteredProperties] = useState([]);
-  const [favouriteList, setFavouriteList] = useState([]); // Local state for favorites
 
   // Extract query parameters from the URL
   const queryParams = new URLSearchParams(location.search);
@@ -50,12 +49,12 @@ const PropertiesPage = () => {
 
   const addToFavourites = (property) => {
     if (!favouriteList.some((item) => item.id === property.id)) {
-      setFavouriteList((prev) => [...prev, property]);
+      setFavouriteList((prev) => [...prev, property]); // Update the global state
     }
   };
 
   const goToFavourites = () => {
-    navigate('/favourites', { state: { favouriteList } });
+    navigate('/favourites');
   };
 
   return (
