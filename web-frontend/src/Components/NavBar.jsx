@@ -194,7 +194,7 @@ const NavBar = () => {
 
 const StyledNavbar = styled.nav`
   position: fixed;
-  top: 0;
+  top:20;
   left: 0;
   width: 100%;
   z-index: 100;

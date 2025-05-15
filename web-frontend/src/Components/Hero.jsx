@@ -22,26 +22,51 @@ const Hero = () => {
     <StyledHero scrolled={scrolled}>
       <div className="gradient-bg"></div>
       
-      {/* Decorative elements */}
+      {/* Geometric decorative elements */}
       <div className="decorative-elements">
-        <div className="decoration decoration-1"></div>
-        <div className="decoration decoration-2"></div>
-        <div className="decoration decoration-3"></div>
-        <div className="decoration decoration-4"></div>
+        <div className="floating-circle circle-1"></div>
+        <div className="floating-circle circle-2"></div>
+        <div className="floating-shape shape-1"></div>
+        <div className="floating-shape shape-2"></div>
+        <div className="floating-dots"></div>
         
         <div className="floating-card card-1">
-          <div className="card-icon">🏡</div>
-          <div className="card-text">100+ Properties</div>
+          <div className="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="#3498db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M9 22V12H15V22" stroke="#3498db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <div className="card-content">
+            <div className="card-title">100+ Properties</div>
+            <div className="card-subtitle">Find your perfect home</div>
+          </div>
         </div>
         
         <div className="floating-card card-2">
-          <div className="card-icon">⭐</div>
-          <div className="card-text">Trusted by 50+ Clients</div>
+          <div className="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 15C15.866 15 19 12.3137 19 9C19 5.68629 15.866 3 12 3C8.13401 3 5 5.68629 5 9C5 12.3137 8.13401 15 12 15Z" stroke="#3498db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="#3498db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <div className="card-content">
+            <div className="card-title">Trusted Service</div>
+            <div className="card-subtitle">50+ happy clients</div>
+          </div>
         </div>
         
         <div className="floating-card card-3">
-          <div className="card-icon">🔍</div>
-          <div className="card-text">Easy Search</div>
+          <div className="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#3498db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M21 21L16.65 16.65" stroke="#3498db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <div className="card-content">
+            <div className="card-title">Easy Search</div>
+            <div className="card-subtitle">Find in seconds</div>
+          </div>
         </div>
       </div>
       
@@ -106,47 +131,62 @@ const StyledHero = styled.section`
     pointer-events: none;
   }
   
-  .decoration {
+  .floating-circle {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.4;
-    filter: blur(50px);
+    border: 1px solid rgba(52, 152, 219, 0.2);
   }
   
-  .decoration-1 {
-    width: 300px;
-    height: 300px;
-    background: rgba(52, 152, 219, 0.15);
-    top: 10%;
-    right: 15%;
-    animation: float 15s infinite alternate ease-in-out;
-  }
-  
-  .decoration-2 {
-    width: 250px;
-    height: 250px;
-    background: rgba(52, 152, 219, 0.1);
-    bottom: 20%;
-    left: 10%;
-    animation: float 18s infinite alternate-reverse ease-in-out;
-  }
-  
-  .decoration-3 {
+  .circle-1 {
     width: 200px;
     height: 200px;
-    background: rgba(44, 62, 80, 0.1);
-    top: 60%;
-    right: 20%;
-    animation: float 12s infinite alternate ease-in-out;
+    top: 20%;
+    right: 15%;
+    animation: pulse 8s infinite alternate ease-in-out;
   }
   
-  .decoration-4 {
+  .circle-2 {
     width: 150px;
     height: 150px;
-    background: rgba(44, 62, 80, 0.05);
-    top: 30%;
-    left: 5%;
-    animation: float 20s infinite alternate-reverse ease-in-out;
+    bottom: 25%;
+    left: 10%;
+    animation: pulse 7s infinite alternate-reverse ease-in-out;
+  }
+  
+  .floating-shape {
+    position: absolute;
+    opacity: 0.2;
+  }
+  
+  .shape-1 {
+    top: 15%;
+    left: 15%;
+    width: 100px;
+    height: 100px;
+    background: #3498db;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: morph 10s infinite alternate ease-in-out;
+  }
+  
+  .shape-2 {
+    bottom: 20%;
+    right: 20%;
+    width: 120px;
+    height: 120px;
+    background: #2c3e50;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morph 12s infinite alternate ease-in-out;
+  }
+  
+  .floating-dots {
+    position: absolute;
+    top: 40%;
+    right: 25%;
+    width: 200px;
+    height: 100px;
+    background-image: radial-gradient(rgba(52, 152, 219, 0.2) 1px, transparent 1px);
+    background-size: 12px 12px;
+    animation: float 15s infinite alternate ease-in-out;
   }
   
   .floating-card {
@@ -160,39 +200,57 @@ const StyledHero = styled.section`
     z-index: 2;
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.8);
-    animation-duration: 6s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    max-width: 240px;
   }
   
   .card-1 {
     top: 30%;
     right: 10%;
-    animation-name: floatCard1;
+    animation: floatCard 6s infinite alternate ease-in-out;
   }
   
   .card-2 {
     bottom: 25%;
-    left: 15%;
-    animation-name: floatCard2;
+    left: 12%;
+    animation: floatCard 7s infinite alternate-reverse ease-in-out;
   }
   
   .card-3 {
-    top: 20%;
-    left: 20%;
-    animation-name: floatCard3;
+    top: 22%;
+    left: 18%;
+    animation: floatCard 8s infinite alternate ease-in-out;
   }
   
   .card-icon {
-    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(52, 152, 219, 0.1);
+    border-radius: 12px;
     margin-right: 12px;
+    flex-shrink: 0;
   }
   
-  .card-text {
+  .card-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-title {
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
     color: #2c3e50;
+    margin-bottom: 4px;
+  }
+  
+  .card-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #6B7280;
   }
   
   .content-container {
@@ -280,7 +338,7 @@ const StyledHero = styled.section`
     }
   }
   
-  @keyframes floatCard1 {
+  @keyframes floatCard {
     0%, 100% {
       transform: translateY(0);
     }
@@ -289,21 +347,23 @@ const StyledHero = styled.section`
     }
   }
   
-  @keyframes floatCard2 {
+  @keyframes pulse {
     0%, 100% {
-      transform: translateY(0);
+      transform: scale(1);
+      opacity: 0.2;
     }
     50% {
-      transform: translateY(15px);
+      transform: scale(1.05);
+      opacity: 0.3;
     }
   }
   
-  @keyframes floatCard3 {
+  @keyframes morph {
     0%, 100% {
-      transform: translateY(0) rotate(-2deg);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     }
     50% {
-      transform: translateY(-20px) rotate(2deg);
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
     }
   }
   
@@ -346,20 +406,21 @@ const StyledHero = styled.section`
       font-size: 48px;
     }
     
-    .decoration {
-      filter: blur(40px);
-    }
-    
     .floating-card {
       padding: 12px;
       transform: scale(0.8);
     }
     
     .card-icon {
-      font-size: 20px;
+      width: 40px;
+      height: 40px;
     }
     
-    .card-text {
+    .card-title {
+      font-size: 14px;
+    }
+    
+    .card-subtitle {
       font-size: 12px;
     }
     
@@ -377,7 +438,7 @@ const StyledHero = styled.section`
       font-size: 36px;
     }
     
-    .floating-card {
+    .floating-card, .floating-circle, .floating-shape, .floating-dots {
       display: none;
     }
   }

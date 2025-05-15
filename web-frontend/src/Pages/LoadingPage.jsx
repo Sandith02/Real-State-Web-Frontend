@@ -73,7 +73,7 @@ const StyledWrapper = styled.div`
   .brandContainer {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
   
   .loaderText {
