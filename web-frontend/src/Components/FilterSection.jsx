@@ -656,7 +656,7 @@ const FilterSection = () => {
 
 const StyledWrapper = styled.div`
   position: relative;
-  padding: 0px 0;
+  padding: 20px 0;
   background-color: #f8f9fa;
   overflow: hidden;
   
@@ -700,6 +700,7 @@ const StyledWrapper = styled.div`
     margin: 0 auto;
     padding: 0 40px;
     z-index: 1;
+    margin-bottom: 90px;
   }
   
   /* Section intro */
