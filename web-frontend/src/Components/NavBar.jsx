@@ -194,11 +194,11 @@ const NavBar = () => {
 
 const StyledNavbar = styled.nav`
   position: fixed;
-  top:20;
+  top:0;
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 20px 0;
+  padding: 30px 0;
   transition: all 0.3s ease;
   
   .navbar-container {
